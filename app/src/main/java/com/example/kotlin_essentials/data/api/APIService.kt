@@ -7,5 +7,5 @@ import retrofit2.http.GET
 interface APIService {
 
     @GET("shows")
-    suspend fun getAllShows() : Response<List<TvShowResponse>>
+    suspend fun getAllShows() : Response<TvShowResponse>
 }

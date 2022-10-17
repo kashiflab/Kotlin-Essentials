@@ -15,6 +15,7 @@ class ShowRepository @Inject constructor(private val apiService: APIService, pri
     get() = _shows
 
     suspend fun getShows(){
+
         val result = apiService.getAllShows()
         if(result.isSuccessful && result.body()!=null){
             result.body()!!.forEach{

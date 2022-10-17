@@ -16,14 +16,20 @@ class ShowRepository @Inject constructor(private val apiService: APIService, pri
 
     suspend fun getShows(){
 
-        val result = apiService.getAllShows()
-        if(result.isSuccessful && result.body()!=null){
-            result.body()!!.forEach{
-                showDB.getShowDao().addShows(it)
+        val showFromDB = showDB.getShowDao().getShows()
+        if(showFromDB.isEmpty()){
+            val result = apiService.getAllShows()
+            if(result.isSuccessful && result.body()!=null){
+                result.body()!!.forEach{
+                    showDB.getShowDao().addShows(it)
+                }
+                _shows.postValue(result.body())
             }
-            _shows.postValue(result.body())
         }else{
-
+            val showResponse = TvShowResponse()
+            showResponse.addAll(showFromDB)
+            _shows.postValue(showResponse)
         }
+
     }
 }

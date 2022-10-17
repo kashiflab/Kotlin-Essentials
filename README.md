@@ -11,6 +11,7 @@ Sample app with Clean architecture using
 * MVVM
 * ViewBinding
 * Coroutines
+* Room
 
 
 Clean Architecture used:
@@ -20,6 +21,7 @@ data
  |--- models
  |--- repository
  |--- utils
+db
 di
  |--- components
  |--- modules

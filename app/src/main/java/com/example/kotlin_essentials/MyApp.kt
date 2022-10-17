@@ -1,9 +1,8 @@
 package com.example.kotlin_essentials
 
 import android.app.Application
-import android.content.Context
-import com.example.kotlin_essentials.di.AppComponent
-import com.example.kotlin_essentials.di.DaggerAppComponent
+import com.example.kotlin_essentials.di.components.AppComponent
+import com.example.kotlin_essentials.di.components.DaggerAppComponent
 
 class MyApp: Application() {
 
@@ -12,7 +11,7 @@ class MyApp: Application() {
     override fun onCreate() {
         super.onCreate()
 
-        appComponent = DaggerAppComponent.builder().build()
+        appComponent = DaggerAppComponent.factory().createContext(this)
     }
 
 }

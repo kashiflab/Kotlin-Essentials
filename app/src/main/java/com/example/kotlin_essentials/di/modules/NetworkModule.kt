@@ -1,4 +1,4 @@
-package com.example.kotlin_essentials.di
+package com.example.kotlin_essentials.di.modules
 
 import com.example.kotlin_essentials.data.api.APIService
 import com.example.kotlin_essentials.data.utils.Constants

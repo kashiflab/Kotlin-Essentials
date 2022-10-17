@@ -9,7 +9,7 @@ import kotlinx.coroutines.launch
 
 class MainViewModel(private val repository: ShowRepository): ViewModel() {
     val shows : LiveData<TvShowResponse>
-    get() = repository.products
+    get() = repository.shows
 
     init {
         viewModelScope.launch {

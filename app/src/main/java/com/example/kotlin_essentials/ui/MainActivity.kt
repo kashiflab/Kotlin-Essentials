@@ -5,9 +5,10 @@ import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.kotlin_essentials.MyApp
 import com.example.kotlin_essentials.R
 import com.example.kotlin_essentials.databinding.ActivityMainBinding
-import com.example.kotlin_essentials.di.DaggerAppComponent
+import com.example.kotlin_essentials.di.components.DaggerAppComponent
 import com.example.kotlin_essentials.ui.adapter.ShowAdapter
 import com.example.kotlin_essentials.ui.viewmodel.MainViewModel
 import com.example.kotlin_essentials.ui.viewmodel.MainViewModelFactory
@@ -27,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        DaggerAppComponent.create().inject(this)
+        (application as MyApp).appComponent.inject(this)
 
         mainViewModel = ViewModelProvider(this, mainViewModelFactory)[MainViewModel::class.java]
 

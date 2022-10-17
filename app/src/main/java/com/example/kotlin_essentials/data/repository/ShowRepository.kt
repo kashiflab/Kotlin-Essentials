@@ -5,18 +5,22 @@ import androidx.lifecycle.MutableLiveData
 import com.example.kotlin_essentials.data.api.APIService
 import com.example.kotlin_essentials.data.models.TvShowResponse
 import com.example.kotlin_essentials.data.models.TvShowResponseItem
+import com.example.kotlin_essentials.db.ShowDB
 import javax.inject.Inject
 
-class ShowRepository @Inject constructor(private val apiService: APIService) {
+class ShowRepository @Inject constructor(private val apiService: APIService, private val showDB: ShowDB) {
 
-    private val _products = MutableLiveData<TvShowResponse>()
-    val products : LiveData<TvShowResponse>
-    get() = _products
+    private val _shows = MutableLiveData<TvShowResponse>()
+    val shows : LiveData<TvShowResponse>
+    get() = _shows
 
     suspend fun getShows(){
         val result = apiService.getAllShows()
         if(result.isSuccessful && result.body()!=null){
-            _products.postValue(result.body())
+            result.body()!!.forEach{
+                showDB.getShowDao().addShows(it)
+            }
+            _shows.postValue(result.body())
         }else{
 
         }

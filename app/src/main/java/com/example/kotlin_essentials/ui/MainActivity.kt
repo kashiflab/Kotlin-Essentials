@@ -6,9 +6,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.kotlin_essentials.MyApp
-import com.example.kotlin_essentials.R
 import com.example.kotlin_essentials.databinding.ActivityMainBinding
-import com.example.kotlin_essentials.di.components.DaggerAppComponent
 import com.example.kotlin_essentials.ui.adapter.ShowAdapter
 import com.example.kotlin_essentials.ui.viewmodel.MainViewModel
 import com.example.kotlin_essentials.ui.viewmodel.MainViewModelFactory

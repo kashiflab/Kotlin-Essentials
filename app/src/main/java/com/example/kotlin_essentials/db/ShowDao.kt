@@ -9,7 +9,7 @@ import com.example.kotlin_essentials.data.models.TvShowResponseItem
 @Dao
 interface ShowDao {
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addShows(show: TvShowResponseItem)
 
     @Query("SELECT * FROM TvShow")
